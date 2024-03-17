@@ -2,16 +2,17 @@ import { FC } from 'react';
 import { Link } from 'react-router-dom';
 import { ROUTES } from '../../../app/router/utils';
 import CoreGameRoulette from '../../../games/roulette';
+import styles from '../../page.module.css';
 
-interface IRoulletePageProps {}
+interface IroulettePageProps {}
 
-const RoulletePage: FC<IRoulletePageProps> = ({}) => {
+const roulettePage: FC<IroulettePageProps> = ({}) => {
   return (
-    <div>
+    <div className={styles.roulette}>
       <Link to={ROUTES.main}>return to Main Page</Link>
       <CoreGameRoulette />
     </div>
   );
 };
 
-export default RoulletePage;
+export default roulettePage;

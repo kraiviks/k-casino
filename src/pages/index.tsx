@@ -2,8 +2,8 @@ import { FC } from 'react';
 import { Link } from 'react-router-dom';
 import { ROUTES } from '../app/router/utils';
 import { useAppSelector } from '../app/store/hooks';
-import { selectUserNickname } from '../entities/slices/userSlice';
-import { useGetUserQuery } from '../entities/api/userApi';
+import { selectUserNickname } from '../entities/user/slices/userSlice';
+import { useGetUserQuery } from '../entities/user/api/userApi';
 
 interface MainPageProps {}
 

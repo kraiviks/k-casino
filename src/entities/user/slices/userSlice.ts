@@ -1,12 +1,12 @@
 import { createSlice } from '@reduxjs/toolkit';
-import type { RootState } from '../../app/store';
+import type { RootState } from '../../../app/store';
 
-interface IuserState {
+interface IUserState {
   name: string;
   nickname: string;
 }
 
-const initialState: IuserState = {
+const initialState: IUserState = {
   name: '',
   nickname: 'default nick',
 };

@@ -13,7 +13,7 @@ export enum RouletteWinOrLose {
   LOSE = 'lose',
 }
 interface IInitialState {
-  readonly winBet: number;
+  winBet: number;
   lifecycle: `${RouletteLifecycle}`;
   activeNumber: number | null;
   currentBet: number;
@@ -21,7 +21,7 @@ interface IInitialState {
 }
 
 const initialState: IInitialState = {
-  winBet: 36,
+  winBet: 0,
   lifecycle: RouletteLifecycle.READY_TO_START,
   activeNumber: null,
   currentBet: 0,
@@ -38,8 +38,10 @@ const rouletteSlice = createSlice({
     setCurrentBet: (state, action: PayloadAction<number>) => {
       if (state.currentBet + action.payload < 0) {
         state.currentBet = 0;
+        state.winBet = 0;
       } else {
         state.currentBet = state.currentBet + action.payload;
+        state.winBet = state.currentBet * 2;
       }
     },
     setRouletteLifecycle: (state, action: PayloadAction<RouletteLifecycle>) => {
@@ -51,6 +53,7 @@ const rouletteSlice = createSlice({
     clearRoulette: (state) => {
       state.activeNumber = null;
       state.currentBet = 0;
+      state.winBet = 0;
     },
   },
 });

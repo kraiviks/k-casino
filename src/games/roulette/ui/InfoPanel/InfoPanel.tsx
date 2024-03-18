@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import { useAppSelector } from '../../../../app/store/hooks';
-import { selectActiveNumber, selectCurrentBet } from '../../slices/rouletteSlice';
+import { selectActiveNumber, selectCurrentBet, selectRouletteWinBet } from '../../slices/rouletteSlice';
 import { selectWalletBalance } from '../../../../entities/wallet/slices/walletSlice';
 import ScoreWindow from '../../shared/scoreWindow';
 
@@ -23,8 +23,7 @@ const InfoPanel: FC<IInfoPanelProps> = ({}) => {
   const balance = useAppSelector(selectWalletBalance);
   const activeNumber = useAppSelector(selectActiveNumber);
   const currentBet = useAppSelector(selectCurrentBet);
-  //TODO: Make a winBet;
-  const winBet = 100;
+  const winBet = useAppSelector(selectRouletteWinBet);
 
   return (
     <div className='flex justify-around'>

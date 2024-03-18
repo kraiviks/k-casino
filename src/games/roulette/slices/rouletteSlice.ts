@@ -18,6 +18,8 @@ interface IInitialState {
   activeNumber: number | null;
   currentBet: number;
   winOrLose: `${RouletteWinOrLose}` | null;
+  highlightBets: boolean;
+  highlightNumbers: boolean;
 }
 
 const initialState: IInitialState = {
@@ -26,6 +28,8 @@ const initialState: IInitialState = {
   activeNumber: null,
   currentBet: 0,
   winOrLose: null,
+  highlightBets: false,
+  highlightNumbers: false,
 };
 
 const rouletteSlice = createSlice({
@@ -50,6 +54,13 @@ const rouletteSlice = createSlice({
     setRouletteWinOrLose: (state, action: PayloadAction<RouletteWinOrLose | null>) => {
       state.winOrLose = action.payload;
     },
+
+    setRouletteHighlightBets: (state, action: PayloadAction<boolean>) => {
+      state.highlightBets = action.payload;
+    },
+    setRouletteHighlightNumbers: (state, action: PayloadAction<boolean>) => {
+      state.highlightNumbers = action.payload;
+    },
     clearRoulette: (state) => {
       state.activeNumber = null;
       state.currentBet = 0;
@@ -63,6 +74,8 @@ export const {
   setCurrentBet,
   setRouletteLifecycle,
   setRouletteWinOrLose,
+  setRouletteHighlightBets,
+  setRouletteHighlightNumbers,
   clearRoulette,
 } = rouletteSlice.actions;
 
@@ -71,5 +84,7 @@ export const selectCurrentBet = (state: RootState) => state.roulette.currentBet;
 export const selectRouletteLifecycle = (state: RootState) => state.roulette.lifecycle;
 export const selectRouletteWinBet = (state: RootState) => state.roulette.winBet;
 export const selectRouletteWinOrLose = (state: RootState) => state.roulette.winOrLose;
+export const selectRouletteHighlightBets = (state: RootState) => state.roulette.highlightBets;
+export const selectRouletteHighlightNumbers = (state: RootState) => state.roulette.highlightNumbers;
 
 export default rouletteSlice.reducer;

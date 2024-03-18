@@ -1,6 +1,6 @@
 import { FC } from 'react';
-import { useAppDispatch } from '../../../../app/store/hooks';
-import { setCurrentBet } from '../../slices/rouletteSlice';
+import { useAppDispatch, useAppSelector } from '../../../../app/store/hooks';
+import { selectRouletteHighlightBets, setCurrentBet, setRouletteHighlightBets } from '../../slices/rouletteSlice';
 import bet50 from '../../../../assets/roulette/bet-50.png';
 import bet100 from '../../../../assets/roulette/bet-100.png';
 import bet200 from '../../../../assets/roulette/bet-200.png';
@@ -22,12 +22,15 @@ const BETS = [
 
 const BetsPanel: FC<IBetsPanelProps> = ({}) => {
   const dispatch = useAppDispatch();
+  const highlightBets = useAppSelector(selectRouletteHighlightBets);
+
   const pickBet = (value: number) => {
     sound.play(SOUNDS_ROULETTE.BET);
     dispatch(setCurrentBet(value));
+    dispatch(setRouletteHighlightBets(false));
   };
   return (
-    <div className={styles.wrapper}>
+    <div className={`${styles.wrapper} ${highlightBets && styles.highlightBets}`}>
       <div className='flex gap-4 items-center'>
         {BETS.map(({ value, image }) => (
           <div

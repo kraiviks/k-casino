@@ -3,4 +3,18 @@
   background-repeat: no-repeat;
   padding: 16px 38px;
   border-radius: 40px;
+  transition: 0.5s box-shadow;
+}
+
+.highlightBets {
+  animation: highlightBets 0.8s infinite;
+}
+
+@keyframes highlightBets {
+  0% {
+    box-shadow: 1px 1px 50px rgb(0 28 116);
+  }
+  100% {
+    box-shadow: 1px 1px 50px rgb(255, 255, 255);
+  }
 }

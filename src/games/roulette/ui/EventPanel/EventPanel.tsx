@@ -11,6 +11,8 @@ import {
   selectCurrentBet,
   selectRouletteLifecycle,
   selectRouletteWinOrLose,
+  setRouletteHighlightBets,
+  setRouletteHighlightNumbers,
   setRouletteLifecycle,
 } from '../../slices/rouletteSlice';
 import RouletteStartButton from '../../shared/button/RouletteStartButton';
@@ -33,8 +35,13 @@ const EventPanel: FC<IEventPanelProps> = ({}) => {
       dispatch(setRouletteSpinStartSpeed());
       dispatch(setRouletteLifecycle(RouletteLifecycle.PLAY));
     }
+    if (!betNumber) {
+      dispatch(setRouletteHighlightBets(true));
+    }
+    if (!currentBet) {
+      dispatch(setRouletteHighlightNumbers(true));
+    }
   };
-
 
   return (
     <div>
@@ -48,7 +55,6 @@ const EventPanel: FC<IEventPanelProps> = ({}) => {
           <div>{currentNumber}</div>
         </div>
       )}
-      
     </div>
   );
 };

@@ -4,9 +4,7 @@ import { ROUTES } from '../../../app/router/utils';
 import CoreGameRoulette from '../../../games/roulette';
 import styles from '../../page.module.css';
 
-interface IroulettePageProps {}
-
-const roulettePage: FC<IroulettePageProps> = ({}) => {
+const roulettePage: FC = () => {
   return (
     <div className={styles.roulette}>
       <Link to={ROUTES.main}>return to Main Page</Link>

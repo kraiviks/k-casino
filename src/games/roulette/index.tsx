@@ -2,9 +2,7 @@ import { FC, useState } from 'react';
 import RouletteGameScene from './scenes/GameScene';
 import { sound } from '@pixi/sound';
 
-interface ICoreGameRouletteProps {}
-
-const CoreGameRoulette: FC<ICoreGameRouletteProps> = ({}) => {
+const CoreGameRoulette: FC = () => {
   const [playSound, setPlaySound] = useState(true);
 
   const toggleSound = () => {

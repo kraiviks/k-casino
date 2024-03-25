@@ -1,9 +1,7 @@
 import { FC } from 'react';
 import { Outlet } from 'react-router-dom';
 
-interface IMainLayoutProps {}
-
-const MainLayout: FC<IMainLayoutProps> = ({}) => {
+const MainLayout: FC= () => {
 	return (
 		<div>
 			<header>Header</header>

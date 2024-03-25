@@ -13,11 +13,9 @@ import { sound } from '@pixi/sound';
 import { SOUNDS_ROULETTE } from './config';
 import * as PIXI from 'pixi.js';
 
-interface IRouletteGameSceneProps {}
-
 const [width, height] = [1150, 500];
 
-const RouletteGameScene: FC<IRouletteGameSceneProps> = ({}) => {
+const RouletteGameScene: FC = () => {
   sound.add(SOUNDS_ROULETTE.BG, soundBg);
   sound.add(SOUNDS_ROULETTE.BET, soundBet);
   sound.add(SOUNDS_ROULETTE.NUMBER, soundNumber);

@@ -1,10 +1,12 @@
 import { FC } from 'react';
 import { useAppSelector } from '../../../../app/store/hooks';
-import { selectActiveNumber, selectCurrentBet, selectRouletteWinBet } from '../../slices/rouletteSlice';
+import {
+  selectActiveNumber,
+  selectCurrentBet,
+  selectRouletteWinBet,
+} from '../../slices/rouletteSlice';
 import { selectWalletBalance } from '../../../../entities/wallet/slices/walletSlice';
 import ScoreWindow from '../../shared/scoreWindow';
-
-interface IInfoPanelProps {}
 
 export interface IScoreItem {
   id: 'balance' | 'winBet' | 'currentBet' | 'activeNumber';
@@ -19,7 +21,7 @@ const ITEMS: IScoreItem[] = [
   { id: 'activeNumber', title: 'Bet number', icon: '' },
 ];
 
-const InfoPanel: FC<IInfoPanelProps> = ({}) => {
+const InfoPanel: FC = () => {
   const balance = useAppSelector(selectWalletBalance);
   const activeNumber = useAppSelector(selectActiveNumber);
   const currentBet = useAppSelector(selectCurrentBet);
@@ -28,7 +30,7 @@ const InfoPanel: FC<IInfoPanelProps> = ({}) => {
   return (
     <div className='flex justify-around'>
       {ITEMS.map((item) => (
-        <div key={item.id}>
+        <div key={`i - ${item.id}`}>
           <div className='text-gray-400'>{item.title}</div>
           <div>
             {item.id === 'balance' && <ScoreWindow icon='balance'>{balance}</ScoreWindow>}

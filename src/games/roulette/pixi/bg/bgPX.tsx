@@ -2,11 +2,7 @@ import { Container, Sprite } from '@pixi/react';
 import  { FC } from 'react';
 import bg from '../../../../assets/roulette/bg1.jpg'
 
-interface IBgPXProps {
-
-};
-
-const BgPX:FC<IBgPXProps> = ({}) => {
+const BgPX:FC = () => {
   return (
     <Container>
       <Sprite

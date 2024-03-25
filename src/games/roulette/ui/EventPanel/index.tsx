@@ -19,9 +19,7 @@ import RouletteStartButton from '../../shared/button/RouletteStartButton';
 import { sound } from '@pixi/sound';
 import { SOUNDS_ROULETTE } from '../../scenes/GameScene/config';
 
-interface IEventPanelProps {}
-
-const EventPanel: FC<IEventPanelProps> = ({}) => {
+const EventPanel: FC = () => {
   const dispatch = useAppDispatch();
   const lifeCycle = useAppSelector(selectRouletteLifecycle);
   const winOrLose = useAppSelector(selectRouletteWinOrLose);
@@ -30,16 +28,16 @@ const EventPanel: FC<IEventPanelProps> = ({}) => {
   const currentBet = useAppSelector(selectCurrentBet);
 
   const onStart = () => {
-    if (betNumber && currentBet) {
+    if (!!betNumber && !!currentBet) {
       sound.play(SOUNDS_ROULETTE.SPIN);
       dispatch(setRouletteSpinStartSpeed());
       dispatch(setRouletteLifecycle(RouletteLifecycle.PLAY));
     }
     if (!betNumber) {
-      dispatch(setRouletteHighlightBets(true));
+      dispatch(setRouletteHighlightNumbers(true));
     }
     if (!currentBet) {
-      dispatch(setRouletteHighlightNumbers(true));
+      dispatch(setRouletteHighlightBets(true));
     }
   };
 

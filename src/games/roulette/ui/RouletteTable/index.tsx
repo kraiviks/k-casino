@@ -2,14 +2,17 @@ import { FC } from 'react';
 import { ROULETTE_TABLE_NUMBERS } from './initData';
 import { twMerge } from 'tailwind-merge';
 import { useAppDispatch, useAppSelector } from '../../../../app/store/hooks';
-import { selectActiveNumber, selectRouletteHighlightNumbers, setActiveNumber, setRouletteHighlightNumbers } from '../../slices/rouletteSlice';
+import {
+  selectActiveNumber,
+  selectRouletteHighlightNumbers,
+  setActiveNumber,
+  setRouletteHighlightNumbers,
+} from '../../slices/rouletteSlice';
 import { sound } from '@pixi/sound';
 import { SOUNDS_ROULETTE } from '../../scenes/GameScene/config';
 import styles from './rouletteTable.module.css';
 
-interface IRouletteTableProps {}
-
-const RouletteTable: FC<IRouletteTableProps> = ({}) => {
+const RouletteTable: FC = () => {
   const activeNumber = useAppSelector(selectActiveNumber);
   const highlightNumbers = useAppSelector(selectRouletteHighlightNumbers);
   const dispatch = useAppDispatch();
@@ -23,7 +26,7 @@ const RouletteTable: FC<IRouletteTableProps> = ({}) => {
     <div className={`flex flex-wrap w-[600px] ${highlightNumbers && styles.highlightNumbers}`}>
       {ROULETTE_TABLE_NUMBERS.map(({ number, color }, index) => (
         <div
-          key={index}
+          key={`n - ${index}`}
           onClick={() => handleClick(number)}
           className={twMerge(
             'w-[50px] h-[50px] flex justify-center items-center border border-solid border-white text-xl font-medium cursor-pointer hover:border-yellow',

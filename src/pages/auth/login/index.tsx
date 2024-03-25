@@ -1,8 +1,6 @@
 import { FC } from 'react';
 
-interface ILoginPageProps {}
-
-const LoginPage: FC<ILoginPageProps> = ({}) => {
+const LoginPage: FC= () => {
 	return <div>LoginPage</div>;
 };
 

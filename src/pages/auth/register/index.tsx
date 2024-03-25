@@ -1,8 +1,6 @@
 import { FC } from 'react';
 
-interface IRegisterPageProps {}
-
-const RegisterPage: FC<IRegisterPageProps> = ({}) => {
+const RegisterPage: FC = () => {
 	return <div>RegisterPage</div>;
 };
 

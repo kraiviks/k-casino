@@ -5,9 +5,7 @@ import { useAppSelector } from '../app/store/hooks';
 import { selectUserNickname } from '../entities/user/slices/userSlice';
 import { useGetUserQuery } from '../entities/user/api/userApi';
 
-interface MainPageProps {}
-
-const MainPage: FC<MainPageProps> = ({}) => {
+const MainPage: FC = () => {
   const nickname = useAppSelector(selectUserNickname);
 
   const { data: users } = useGetUserQuery({ userId: 21 });
@@ -17,7 +15,7 @@ const MainPage: FC<MainPageProps> = ({}) => {
       {nickname}
       <Link to={ROUTES.games.roulette}>roulette</Link>
       <Link to={ROUTES.games.slots}>Slots</Link>
-      <Link to={ROUTES.games.hummer}>Hummers</Link>
+      <Link to={ROUTES.games.hummers}>Hummers</Link>
     </div>
   );
 };

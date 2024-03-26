@@ -4,7 +4,7 @@ export const ROUTES = {
   games: {
     roulette: 'games/roulette',
     slots: 'games/slots',
-    hummer: 'games/hummer',
+    hummers: 'games/hummers',
   },
 };
 

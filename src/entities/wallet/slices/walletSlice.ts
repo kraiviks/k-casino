@@ -1,16 +1,18 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
-import type { RootState } from '../../../app/store';
-import { IWallet } from '../model/Wallet';
+import { IWallet } from './../model/Wallet';
+import { RootState } from '../../../app/store';
 
 const initialState: IWallet = {
   game_balance: 5000,
 };
 
-export const walletSlice = createSlice({
+const walletSlice = createSlice({
   initialState,
   name: 'wallet',
   reducers: {
     setBalance: (state, action: PayloadAction<number>) => {
+      console.log(action);
+
       state.game_balance = state.game_balance + action.payload;
     },
   },

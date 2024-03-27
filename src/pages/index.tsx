@@ -1,21 +1,24 @@
-import { FC } from 'react';
+import React, { FC } from 'react';
 import { Link } from 'react-router-dom';
 import { ROUTES } from '../app/router/utils';
 import { useAppSelector } from '../app/store/hooks';
 import { selectUserNickname } from '../entities/user/slices/userSlice';
 import { useGetUserQuery } from '../entities/user/api/userApi';
 
-const MainPage: FC = () => {
+interface IMainPageProps {}
+
+const MainPage: FC<IMainPageProps> = ({}) => {
   const nickname = useAppSelector(selectUserNickname);
 
-  const { data: users } = useGetUserQuery({ userId: 21 });
-
+  const { data: users } = useGetUserQuery({
+    userId: 13,
+  });
   return (
     <div className='flex gap-4'>
-      {nickname}
-      <Link to={ROUTES.games.roulette}>roulette</Link>
+      <div>{nickname}</div>
+      <Link to={ROUTES.games.roulette}>Roulette</Link>
       <Link to={ROUTES.games.slots}>Slots</Link>
-      <Link to={ROUTES.games.hummers}>Hummers</Link>
+      <Link to={ROUTES.games.hummer}>Hummers</Link>
     </div>
   );
 };

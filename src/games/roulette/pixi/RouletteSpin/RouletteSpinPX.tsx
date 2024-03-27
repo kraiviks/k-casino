@@ -14,7 +14,6 @@ import {
   setRouletteSpinDegressRotation,
   setRouletteSpinSpeed,
 } from '../../slices/rouletteSpinSlice';
-import { radianToDegress } from '../../../../shared/lib/degress/radianToDegress';
 import { RouletteLifecycle, setRouletteLifecycle } from '../../slices/rouletteSlice';
 import { sound } from '@pixi/sound';
 import { SOUNDS_ROULETTE } from '../../scenes/GameScene/config';

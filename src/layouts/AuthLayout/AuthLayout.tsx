@@ -1,13 +1,17 @@
-import { FC } from 'react';
+import React, { FC } from 'react';
 import { Outlet } from 'react-router-dom';
 
-const AuthLayout: FC = () => {
-	return (
-		<div>
-			<header>Header Auth</header>
-			<Outlet />
-		</div>
-	);
+interface IAuthLayoutProps {
+
+};
+
+const AuthLayout:FC<IAuthLayoutProps> = ({}) => {
+  return (
+    <div>
+      <div>Header Auth</div>
+      <Outlet />
+    </div>
+  )
 };
 
 export default AuthLayout;

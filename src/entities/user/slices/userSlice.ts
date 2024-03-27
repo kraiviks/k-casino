@@ -1,24 +1,26 @@
-import { createSlice } from '@reduxjs/toolkit';
-import type { RootState } from '../../../app/store';
+import { createSlice } from '@reduxjs/toolkit'
+import { RootState } from '../../../app/store';
 
-interface IUserState {
+interface UserState {
   name: string;
   nickname: string;
 }
 
-const initialState: IUserState = {
+const initialState: UserState = {
   name: '',
-  nickname: 'default nick',
-};
+  nickname: 'default nick'
+}
 
 export const userSlice = createSlice({
   name: 'user',
   initialState,
-  reducers: {},
-});
+  reducers: {
 
-// export const { increment, decrement, incrementByAmount } = userSlice.actions;
+  },
+})
+
+// export const { increment, decrement, incrementByAmount } = userSlice.actions
 
 export const selectUserNickname = (state: RootState) => state.user.nickname;
 
-export default userSlice.reducer;
+export default userSlice.reducer

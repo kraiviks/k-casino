@@ -1,4 +1,4 @@
-import { FC, useEffect } from 'react';
+import { FC } from 'react';
 import RouletteSpinPX from '../../pixi/RouletteSpin/RouletteSpinPX';
 import GameSceneUI from './GameSceneUI';
 import { Stage } from '../../../../app/config/contextBridge';

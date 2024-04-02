@@ -1,21 +1,16 @@
-import React, { FC } from 'react';
-import { Link } from 'react-router-dom';
-import { ROUTES } from '../../../app/router/utils';
+import { FC } from 'react';
 import HummerCore from '../../../games/hummer';
+import { twMerge } from 'tailwind-merge';
+import styles from '../../page.module.css';
+import HomeButton from '../../../shared/widgets/HomeButton';
 
-interface IHummerPageProps {
-
-};
-
-const HummerPage: FC<IHummerPageProps> = ({ }) => {
+const HummerPage: FC = ({}) => {
   return (
-    <div className="h-screen flex justify-center items-center">
-      <div>
-        <Link to={ROUTES.main}>return to Main Page</Link>
-        <HummerCore />
-      </div>
+    <div className={twMerge('h-screen flex justify-center items-center', styles.hummer)}>
+      <HomeButton />
+      <HummerCore />
     </div>
-  )
+  );
 };
 
 export default HummerPage;

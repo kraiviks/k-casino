@@ -1,17 +1,15 @@
-import React, { FC } from 'react';
+import { FC } from 'react';
 import { Outlet } from 'react-router-dom';
+import styles from './MainLayout.module.css';
 
-interface IMainLayoutProps {
+interface IMainLayoutProps {}
 
-};
-
-const MainLayout:FC<IMainLayoutProps> = ({}) => {
+const MainLayout: FC<IMainLayoutProps> = ({}) => {
   return (
-    <div>
-      <div>Header</div>
+    <div className={styles.mainLayout}>
       <Outlet />
     </div>
-  )
+  );
 };
 
 export default MainLayout;

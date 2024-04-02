@@ -13,16 +13,18 @@ import spinText from '../../../../assets/slot/info/spin.png';
 import buttonImage from '../../../../assets/slot/info/button.png';
 import handleImage from '../../../../assets/slot/info/handle.png';
 import { twMerge } from 'tailwind-merge';
+import { selectWalletBalance } from '../../../../entities/wallet/slices/walletSlice';
 
 const SlotEventPanel: FC = () => {
   const lifecycle = useAppSelector(selectSlotsLifecycle);
   const winOrLose = useAppSelector(selectSlotsWinOrLose);
   const currentBet = useAppSelector(selectSlotsCurrentBet);
+  const balance = useAppSelector(selectWalletBalance);
 
   const isReadyToStart = lifecycle === SlotsLifecycle.READY_TO_START;
   const dispatch = useAppDispatch();
   const onStart = () => {
-    if (currentBet && isReadyToStart) {
+    if (balance && currentBet && isReadyToStart) {
       dispatch(startSlots());
     }
   };

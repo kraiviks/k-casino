@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, useEffect } from 'react';
 import RouletteSpinPX from '../../pixi/RouletteSpin/RouletteSpinPX';
 import GameSceneUI from './GameSceneUI';
 import { Stage } from '../../../../app/config/contextBridge';
@@ -21,17 +21,16 @@ const RouletteGameScene: FC = () => {
   sound.add(SOUNDS_ROULETTE.NUMBER, soundNumber);
   sound.add(SOUNDS_ROULETTE.SPIN, soundRouletteSpin);
 
-  // useEffect(() => {
-  //   (async () => {
-  //     await PIXI.Assets.load(SOUNDS_ROULETTE.BG);
-  //     sound.volume(SOUNDS_ROULETTE.BG, 0.2);
-  //     sound.play(SOUNDS_ROULETTE.BG);
-  //   })();
-  // }, []);
+  useEffect(() => {
+    (async () => {
+      await PIXI.Assets.load(SOUNDS_ROULETTE.BG);
+      sound.volume(SOUNDS_ROULETTE.BG, 0.05);
+      sound.play(SOUNDS_ROULETTE.BG);
+    })();
+  }, []);
 
   return (
-    <div className='flex flex-col items-center'>
-      <div>Title game</div>
+    <div className='flex items-center justify-center'>
       <div className={styles.table}>
         <GameSceneActionsProvider>
           <GameSceneUI>

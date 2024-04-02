@@ -1,5 +1,5 @@
-import { Container } from '@pixi/react';
-import React, { FC, useEffect } from 'react';
+import { FC, useEffect } from 'react';
+import { Container, Text } from '@pixi/react';
 import { HummerPitState } from '../../../slices/models/Pit';
 import HummerPitPX from './PitPX';
 import * as PIXI from 'pixi.js';
@@ -26,7 +26,7 @@ const PitsPX: FC<IPitsPXProps> = ({}) => {
           state: HummerPitState.PROCESSING,
         }),
       );
-    }, 700);
+    }, 1000);
 
     return () => clearInterval(algoritmInternal);
   }, []);
@@ -40,6 +40,10 @@ const PitsPX: FC<IPitsPXProps> = ({}) => {
       setFrames(genFrames);
     });
   }, []);
+
+  if (!frames?.length) {
+    return <Text text='Loading...' x={210} y={300} style={{ fill: 'white', fontSize: 32 }} />;
+  }
   return (
     <Container x={25} y={50}>
       {pits.map((pit, idx) => (

@@ -15,13 +15,15 @@ const CoreGameRoulette: FC = () => {
     }
   };
   return (
-    <div>
-      <RouletteGameScene />
-      <div
-        onClick={toggleSound}
-        className='border-white border-2 rounded-md p-1 relative w-[max-content] left-[24%] text-white cursor-pointer hover:bg-gray-700'
-      >
-        SOUND
+    <div className='flex flex-col justify-center  h-full'>
+      <div>
+        <RouletteGameScene />
+        <div
+          onClick={toggleSound}
+          className='border-t-0 rounded-t-none border-2 rounded-md p-1 relative w-[max-content] left-[23.8%] text-white cursor-pointer hover:bg-gray-700'
+        >
+          SOUND {playSound ? 'ON' : 'OFF'}
+        </div>
       </div>
     </div>
   );

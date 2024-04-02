@@ -1,10 +1,10 @@
-import { PayloadAction, createSlice } from "@reduxjs/toolkit";
-import { RootState } from "../../../app/store";
-import { IHummerPit, MOCK_PITS } from "./models/Pit";
+import { PayloadAction, createSlice } from '@reduxjs/toolkit';
+import { RootState } from '../../../app/store';
+import { IHummerPit, MOCK_PITS } from './models/Pit';
 
 export enum HummerScenes {
   MENU = 'menu',
-  GAME = 'game'
+  GAME = 'game',
 }
 
 const DEFAULT_SCORE = 1000;
@@ -15,6 +15,7 @@ interface IHummer {
   pits: IHummerPit[];
   score: number;
   health: number;
+  gameOver: boolean;
 }
 
 const initialState: IHummer = {
@@ -22,7 +23,8 @@ const initialState: IHummer = {
   pits: MOCK_PITS,
   score: DEFAULT_SCORE,
   health: START_HEALTH,
-}
+  gameOver: false,
+};
 
 const hummerCoreSlice = createSlice({
   initialState,
@@ -31,34 +33,52 @@ const hummerCoreSlice = createSlice({
     setHummerScene: (state, action: PayloadAction<HummerScenes>) => {
       state.scene = action.payload;
     },
-    setHummerPits: (state, action: PayloadAction<{
-      currentIndex: number;
-      state: IHummerPit['state'];
-    }>) => {
+    setHummerPits: (
+      state,
+      action: PayloadAction<{
+        currentIndex: number;
+        state: IHummerPit['state'];
+      }>,
+    ) => {
       const newPitsState = state.pits.map((pit, pitIndex) => {
         if (action.payload.currentIndex === pitIndex) {
-          return ({
+          return {
             ...pit,
             state: action.payload.state,
-          });
+          };
         } else {
           return pit;
         }
       });
 
       state.pits = [...newPitsState];
-    }
-  }
+    },
+    setHummerScore: (state, action: PayloadAction<number>) => {
+      if (state.score + action.payload < 0) {
+        if (state.health - 1 <= 0) {
+          state.gameOver = true;
+        } else {
+          state.health = state.health - 1;
+          state.score = DEFAULT_SCORE;
+        }
+      } else {
+        state.score = state.score + action.payload;
+      }
+    },
+    clearHummer: (state) => {
+      state.score = DEFAULT_SCORE;
+      state.health = START_HEALTH;
+      state.gameOver = false;
+    },
+  },
 });
 
-export const {
-  setHummerScene,
-  setHummerPits,
-} = hummerCoreSlice.actions;
+export const { setHummerScene, setHummerPits, setHummerScore, clearHummer } = hummerCoreSlice.actions;
 
-export const selectHummerScene = (state:RootState) => state.hummerCoreSlice.scene;
-export const selectHummerPits = (state:RootState) => state.hummerCoreSlice.pits;
-export const selectHummerHealth = (state:RootState) => state.hummerCoreSlice.health;
-export const selectHummerScore = (state:RootState) => state.hummerCoreSlice.score;
+export const selectHummerScene = (state: RootState) => state.hummerCoreSlice.scene;
+export const selectHummerPits = (state: RootState) => state.hummerCoreSlice.pits;
+export const selectHummerHealth = (state: RootState) => state.hummerCoreSlice.health;
+export const selectHummerScore = (state: RootState) => state.hummerCoreSlice.score;
+export const selectHummerGameOver = (state: RootState) => state.hummerCoreSlice.gameOver;
 
 export default hummerCoreSlice.reducer;

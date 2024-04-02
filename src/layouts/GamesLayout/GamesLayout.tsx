@@ -1,11 +1,7 @@
-import React, { FC } from 'react';
+import  { FC } from 'react';
 import { Outlet } from 'react-router-dom';
 
-interface IGamesLayoutProps {
-
-};
-
-const GamesLayout:FC<IGamesLayoutProps> = ({}) => {
+const GamesLayout:FC = ({}) => {
   return (
     <div className="w-full h-screen">
       {/* <div>Header Games</div> */}

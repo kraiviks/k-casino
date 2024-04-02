@@ -9,9 +9,7 @@ import { useState } from 'react';
 import { useAppDispatch, useAppSelector } from '../../../../../app/store/hooks';
 import { selectHummerPits, setHummerPits } from '../../../slices/hummerCoreSlice';
 
-interface IPitsPXProps {}
-
-const PitsPX: FC<IPitsPXProps> = ({}) => {
+const PitsPX: FC = ({}) => {
   const [frames, setFrames] = useState<PIXI.Texture<PIXI.Resource>[]>();
   const pits = useAppSelector(selectHummerPits);
 
@@ -42,7 +40,7 @@ const PitsPX: FC<IPitsPXProps> = ({}) => {
   }, []);
 
   if (!frames?.length) {
-    return <Text text='Loading...' x={210} y={300} style={{ fill: 'white', fontSize: 32 }} />;
+    return <Text text='Loading...' x={210} y={300} />;
   }
   return (
     <Container x={25} y={50}>

@@ -1,5 +1,5 @@
 import { Sprite } from '@pixi/react';
-import React, { FC } from 'react';
+import { FC } from 'react';
 import { HummerPitState, IHummerPit } from '../../../slices/models/Pit';
 import pitEmpty from '../../../../../assets/hummer/item.svg';
 import * as PIXI from 'pixi.js';

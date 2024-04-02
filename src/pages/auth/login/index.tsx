@@ -1,13 +1,7 @@
-import React, { FC } from 'react';
+import { FC } from 'react';
 
-interface ILoginPageProps {
-
-};
-
-const LoginPage:FC<ILoginPageProps> = ({}) => {
-  return (
-    <div>Login Page!</div>
-  )
+const LoginPage: FC = ({}) => {
+  return <div>Login Page!</div>;
 };
 
 export default LoginPage;

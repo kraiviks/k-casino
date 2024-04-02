@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import { FC } from 'react';
 import CoreGameSlots from '../../../games/slots';
 import { twMerge } from 'tailwind-merge';
 import styles from './../../page.module.css';

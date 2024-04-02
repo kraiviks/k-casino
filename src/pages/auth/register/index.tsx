@@ -1,10 +1,7 @@
-import React, { FC } from 'react';
+import { FC } from 'react';
 
-interface ILoginPageProps {
 
-};
-
-const RegisterPage:FC<IRegisterPageProps> = ({}) => {
+const RegisterPage:FC = ({}) => {
   return (
     <div>Register Page!</div>
   )

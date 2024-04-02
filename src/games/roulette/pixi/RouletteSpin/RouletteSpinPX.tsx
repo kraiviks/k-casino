@@ -17,6 +17,7 @@ import {
 import { RouletteLifecycle, setRouletteLifecycle } from '../../slices/rouletteSlice';
 import { sound } from '@pixi/sound';
 import { SOUNDS_ROULETTE } from '../../scenes/GameScene/config';
+import { radianToDegrees } from '../../../../shared/lib/degrees/radianToDegrees';
 
 interface IRouletteSpinPXProps {}
 
@@ -46,7 +47,7 @@ const RouletteSpinPX: FC<IRouletteSpinPXProps> = ({}) => {
       setRotationWheel((prev) => prev - rotation);
       if (speed < 0.005) {
         dispatch(setRouletteSpinSpeed(0));
-        dispatch(setRouletteSpinDegressRotation(radianToDegress(rotationMedium % (Math.PI * 2))));
+        dispatch(setRouletteSpinDegressRotation(radianToDegrees(rotationMedium % (Math.PI * 2))));
         dispatch(setRouletteLifecycle(RouletteLifecycle.FINISHED));
         sound.stop(SOUNDS_ROULETTE.SPIN);
       } else {

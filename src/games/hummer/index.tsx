@@ -1,13 +1,11 @@
-import React, { FC, useEffect } from 'react';
+import { FC, useEffect } from 'react';
 import { useAppSelector } from '../../app/store/hooks';
 import { HummerScenes, selectHummerScene } from './slices/hummerCoreSlice';
 import HummerMenuScene from './scenes/menu/HummerMenuScene';
 import HummerGameScene from './scenes/game/HummerGameScene';
 import { sound } from '@pixi/sound';
 
-interface IHummerCoreProps {}
-
-const HummerCore: FC<IHummerCoreProps> = ({}) => {
+const HummerCore: FC = ({}) => {
   const scene = useAppSelector(selectHummerScene);
 
   useEffect(() => {
